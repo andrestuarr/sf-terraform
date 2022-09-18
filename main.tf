@@ -9,15 +9,5 @@ terraform {
 
 provider "snowflake" {
   role  = "SYSADMIN"
-}
-
-resource "snowflake_database" "db" {
-  name     = "challenge"
-}
-
-resource "snowflake_warehouse" "warehouse" {
-  name           = "rappibank"
-  warehouse_size = "large"
-
-  auto_suspend = 60
+  region = "us-central1.gcp"
 }
