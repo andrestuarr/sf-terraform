@@ -8,6 +8,6 @@ terraform {
 }
 
 provider "snowflake" {
-  role  = "SYSADMIN"
+  role   = "SYSADMIN"
   region = "us-central1.gcp"
 }

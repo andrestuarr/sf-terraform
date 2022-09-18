@@ -1,28 +1,27 @@
 resource "snowflake_database" "db" {
-  name     = "challenge"
+  name = "CHALLENGE"
 }
 
 resource "snowflake_warehouse" "warehouse" {
-  name           = "rappibank"
+  name           = "RAPPIBANK"
   warehouse_size = "large"
-  auto_suspend = 60
+  auto_suspend   = 60
 }
 
-resource snowflake_schema schema {
-  database = snowflake_database.db.name
-  name     = "andrestuarr"
-  comment  = "schema for challenge"
 
-  is_transient        = false
-  is_managed          = false
+resource "snowflake_schema" "schema" {
+  database   = snowflake_database.db.name
+  name       = "ANDRESTUARR"
+  comment    = "schema for challenge"
+  is_managed = false
 }
 
 resource "snowflake_table" "table" {
-  database            = snowflake_schema.schema.database
-  schema              = snowflake_schema.schema.name
-  name                = "members"
-  comment             = "table of members"
-  change_tracking     = false
+  database        = snowflake_schema.schema.database
+  schema          = snowflake_schema.schema.name
+  name            = "MEMBERS"
+  comment         = "table of members"
+  change_tracking = false
 
   column {
     name     = "member_id"
@@ -108,3 +107,4 @@ resource "snowflake_table" "table" {
     nullable = true
   }
 }
+
